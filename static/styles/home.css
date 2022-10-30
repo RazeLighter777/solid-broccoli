@@ -1,0 +1,8 @@
+.solar-panels {
+	background-image: url('/assets/solar_panels.jpg');
+	background-size: 100%;
+	background-position: center;
+	
+	width: 100%;
+	height: 50vh;
+}
