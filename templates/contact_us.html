@@ -26,18 +26,18 @@
 			<div class="card">
 				<div class="card-body">
 					<h2 class="text-center">Contact Us Form</h2>
-					<form>
+					<form action="/contact_us" method="post">
 						<div class="mb-3">
 							<label for="contactNameInput" class="form-label">Name</label>
-							<input type="text" class="form-control" id="contactNameInput" placeholder="Jauwghn Dough">
+							<input type="text" name="name" class="form-control" id="contactNameInput" placeholder="Jauwghn Dough" required>
 						</div>
 						<div class="mb-3">
 							<label for="contactEmailInput" class="form-label">Email</label>
-							<input type="email" class="form-control" id="contactEmailInput" placeholder="jauwghn.dough@example.com">
+							<input type="email" name="email" class="form-control" id="contactEmailInput" placeholder="jauwghn.dough@example.com" required>
 						</div>
 						<div class="mb-3">
 							<label for="contactPhoneInput" class="form-label">Phone Number</label>
-							<input type="tel" class="form-control" id="contactPhoneInput" placeholder="123-456-7890">
+							<input type="tel" name="phone" class="form-control" id="contactPhoneInput" placeholder="123-456-7890" required>
 						</div>
 						<button type="submit" class="btn btn-primary mb-3 w-100">Submit</button>
 					</form>

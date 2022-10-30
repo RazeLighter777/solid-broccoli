@@ -11,14 +11,14 @@
 			<div class="card">
 				<div class="card-body">
 					<h3 class="text-center">Login</h3>
-					<form>
+					<form action="/login" method="post"> 
 						<div class="mb-3">
 							<label for="loginUsernameInput" class="form-label">Username</label>
-							<input type="text" class="form-control" id="loginUsernameInput" placeholder="jauwghnie.dough">
+							<input type="text" name="username" class="form-control" id="loginUsernameInput" placeholder="jauwghnie.dough" required>
 						</div>
 						<div class="mb-3">
 							<label for="contactPasswordInput" class="form-label">Password</label>
-							<input type="password" class="form-control" id="contactPasswordInput">
+							<input type="password" name="password" class="form-control" id="contactPasswordInput" required>
 						</div>
 						<button type="submit" class="btn btn-primary mb-3 w-100">Submit</button>
 					</form>
