@@ -1,7 +1,7 @@
-from flask import Flask, redirect, send_from_directory, render_template, url_for
+from flask import Flask, g, redirect, send_from_directory, render_template, url_for
 from flask_autoindex import AutoIndexBlueprint
 from flask import Blueprint
-from flask_login import LoginManager, logout_user
+from flask_login import LoginManager, login_required, logout_user
 from flask_login import login_user
 import os
 from flask import request
@@ -35,6 +35,8 @@ class User:
         return self.name
     def to_json(self):
         return {"name": self.name}
+    def admin(self):
+        return self.name == "admin"
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -79,6 +81,7 @@ def login_page():
 	return render_template('login.html')
 
 @app.route('/admin')
+@login_required
 def admin():
 	return render_template('admin.html')
     
