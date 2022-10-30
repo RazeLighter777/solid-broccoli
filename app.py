@@ -1,9 +1,10 @@
 from flask import Flask, redirect, send_from_directory, render_template, url_for
 from flask_autoindex import AutoIndexBlueprint
 from flask import Blueprint
-from flask_login import LoginManager
+from flask_login import LoginManager, logout_user
 from flask_login import login_user
 import os
+from flask import request
 
 app = Flask(__name__,
 	static_url_path='', 
@@ -40,20 +41,23 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 @login_manager.user_loader
 def load_user(user_id):
-    return User.objects(id=user_id).first()
+    return User(user_id)
 
 
 @app.route('/login', methods = ['POST'])
-def login(request):
+def login():
     username = request.form['username']
     password = request.form['password']
     if username == 'admin' and password == 'admin':
         user = User(username)
         login_user(user)
-        return {"result": 200, "data" : user.to_json()}
+        return redirect('/')
     else:
-        return {"result" : 401}
-
+        return redirect('/login?error=1')
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/')
 @app.route('/')
 def home():
 	return render_template('home.html')
@@ -70,8 +74,8 @@ def manufacturing():
 def solar_generation():
 	return render_template('solar_generation.html')
 
-@app.route('/login')
-def login():
+@app.route('/login', methods = ['GET'])
+def login_page():
 	return render_template('login.html')
 
 @app.route('/admin')
