@@ -1,7 +1,7 @@
-from flask import Flask, redirect, send_from_directory, render_template, url_for
+from flask import Flask, g, redirect, send_from_directory, render_template, url_for
 from flask_autoindex import AutoIndexBlueprint
 from flask import Blueprint
-from flask_login import LoginManager, logout_user, current_user
+from flask_login import LoginManager, login_required, logout_user
 from flask_login import login_user
 import os
 from flask import request
@@ -22,19 +22,21 @@ app.register_blueprint(bp_ai, url_prefix='/files')
 
 #User management
 class User:
-	name = ""
-	def __init__(self, name):
-		self.name = name
-	def is_authenticated(self):
-		return True
-	def is_active(self):
-		return True
-	def is_anonymous(self):
-		return False
-	def get_id(self):
-		return self.name
-	def to_json(self):
-		return {"name": self.name}
+    name = ""
+    def __init__(self, name):
+        self.name = name
+    def is_authenticated(self):
+        return True
+    def is_active(self):
+        return True
+    def is_anonymous(self):
+        return False
+    def get_id(self):
+        return self.name
+    def to_json(self):
+        return {"name": self.name}
+    def admin(self):
+        return self.name == "admin"
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -81,6 +83,7 @@ def login_page():
 	return render_template('login.html', didLoginFail=(request.args.get('error') == '1'), user=current_user)
 
 @app.route('/admin')
+@login_required
 def admin():
 	return render_template('admin.html', user=current_user)
 	
