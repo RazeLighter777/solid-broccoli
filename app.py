@@ -10,7 +10,7 @@ app = Flask(__name__,
 #add folder listing to the page
 bp_ai = Blueprint('browse',__name__, static_folder='./static', template_folder='./templates')
 ppath = "/mnt"
-AutoIndexBlueprint(bp_ai, browse_root=ppath, template_context=dict(x='y'),as_attachment=True)
+AutoIndexBlueprint(bp_ai, browse_root=ppath, template_context=dict(x='y'))
 app.register_blueprint(bp_ai, url_prefix='/files')
 
 
