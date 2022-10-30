@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Admin{% endblock %}
+
+{% block styles %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/admin.css') }}">	
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-10 offset-1">
+			<div class="card">
+				<div class="card-body">
+					<h1 class="text-center">FTP Server View</h1>
+					<iframe class="file-frame" src="/files"></iframe>
+				</div>
+			</div>
+			<div class="card mt-5">
+				<div class="card-body">
+					<h1 class="text-center">Emails</h1>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

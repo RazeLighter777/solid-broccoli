@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us{% endblock %}
+
+{% block styles %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/contact_us.css') }}">	
+{% endblock %}
+
+{% block precontent %}
+	
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col text-center">
+			<div class="card">
+				<div class="card-body">
+					<h2>Contact Information</h2>
+					<p class="mt-4">Welcome to Sole-Zon-Solis Energy, we are happy to answer any questions you might have about our services. Please fill out the contact us form and we will get back to you shortly!</p>
+
+					<p class="mt-4">[PHONE NUMBER]</p>
+					<p class="mt-4">[EMAIL ADDRESS]</p>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+					<h2 class="text-center">Contact Us Form</h2>
+					<form action="/contact_us" method="post">
+						<div class="mb-3">
+							<label for="contactNameInput" class="form-label">Name</label>
+							<input type="text" name="name" class="form-control" id="contactNameInput" placeholder="Jauwghn Dough" required>
+						</div>
+						<div class="mb-3">
+							<label for="contactEmailInput" class="form-label">Email</label>
+							<input type="email" name="email" class="form-control" id="contactEmailInput" placeholder="jauwghn.dough@example.com" required>
+						</div>
+						<div class="mb-3">
+							<label for="contactPhoneInput" class="form-label">Phone Number</label>
+							<input type="tel" name="phone" class="form-control" id="contactPhoneInput" placeholder="123-456-7890" required>
+						</div>
+						<button type="submit" class="btn btn-primary mb-3 w-100">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -9,28 +9,29 @@
 		{% block styles %}{% endblock %}
 	</head>
 	<body>
-		<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
+		<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 px-5 border-bottom">
 			<a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
 				<img class="logo" src="/assets/logo.svg" />
 			</a>
 
 			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-				<li><a href="#" class="nav-link px-2 link-dark">Contact Us</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark">Manfacturing</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark">Solar Generation</a></li>
+				<li><a href="/contact_us" class="nav-link px-2 link-dark">Contact Us</a></li>
+				<li><a href="/manufacturing" class="nav-link px-2 link-dark">Manfacturing</a></li>
+				<li><a href="/solar_generation" class="nav-link px-2 link-dark">Solar Generation</a></li>
 			</ul>
 
 			<div class="col-md-3 text-end">
-				<button type="button" class="btn btn-outline-primary me-2">Login</button>
+				<a type="button" class="btn btn-outline-primary me-2" href="/login">Login</a>
 			</div>
 		</header>
 		{% block precontent %}{% endblock %}
-		<div class="container">
+		<div class="container mt-4">
 			{% block content %}{% endblock %}
 		</div>
 		
-		<div class="container">
-			<footer class="py-5">
+		<div class="container py-5">
+			<hr />
+			<footer class="">
 				<div class="row">
 					<div class="col-4">
 						<div class="vita-logo-container">
@@ -51,14 +52,11 @@
 						</form>
 					</div>
 
-					<div class="col-4">
-						<h5>Section</h5>
+					<div class="col-4 text-center">
 						<ul class="nav flex-column">
-							<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-							<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-							<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-							<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-							<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+							<li class="nav-item mb-2"><a href="/contact_us" class="nav-link p-0 text-muted">Contact Us</a></li>
+							<li class="nav-item mb-2"><a href="/manufacturing" class="nav-link p-0 text-muted">Manufacturing</a></li>
+							<li class="nav-item mb-2"><a href="/solar_generation" class="nav-link p-0 text-muted">Solar Generation</a></li>
 						</ul>
 					</div>
 				</div>
