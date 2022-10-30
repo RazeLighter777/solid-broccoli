@@ -20,6 +20,9 @@
 							<label for="contactPasswordInput" class="form-label">Password</label>
 							<input type="password" name="password" class="form-control" id="contactPasswordInput" required>
 						</div>
+						{% if didLoginFail %}
+							<p class="text-danger">Login Failed</p>
+						{% endif %}
 						<button type="submit" class="btn btn-primary mb-3 w-100">Submit</button>
 					</form>
 				</div>

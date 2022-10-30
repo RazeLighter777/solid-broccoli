@@ -18,10 +18,18 @@
 				<li><a href="/contact_us" class="nav-link px-2 link-dark">Contact Us</a></li>
 				<li><a href="/manufacturing" class="nav-link px-2 link-dark">Manfacturing</a></li>
 				<li><a href="/solar_generation" class="nav-link px-2 link-dark">Solar Generation</a></li>
+				{% if user.admin() %}
+					<li><a href="/admin" class="nav-link px-2 link-dark">Admin</a></li>
+				{% endif %}
 			</ul>
 
 			<div class="col-md-3 text-end">
-				<a type="button" class="btn btn-outline-primary me-2" href="/login">Login</a>
+				{% if user.get_id() %}
+					<span class="mr-4">Welcome, {{ user.get_id() }}</span>
+					<a type="button" class="btn btn-outline-primary me-2" href="/logout">Logout</a>
+				{% else %}
+					<a type="button" class="btn btn-outline-primary me-2" href="/login">Login</a>
+				{% endif %}
 			</div>
 		</header>
 		{% block precontent %}{% endblock %}
