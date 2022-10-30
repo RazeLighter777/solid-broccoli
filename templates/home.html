@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block styles %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">	
+{% endblock %}
+
+{% block precontent %}
+	<div class="solar-panels"></div>
+{% endblock %}
+
+{% block content %}
+	<div class="p-5 mt-4 bg-light rounded-3">
+		<div class="container-fluid py-5">
+			<h1 class="display-5 fw-bold text-center">Sonnenberg Fields</h1>
+			<h1 class="display-5 fw-bold text-center">Sonnenberg Fields</h1>
+			<h1 class="display-5 fw-bold text-center">Sonnenberg Fields</h1>
+			<h1 class="display-5 fw-bold text-center">Sonnenberg Fields</h1>
+			<h1 class="display-5 fw-bold text-center">Sonnenberg Fields</h1>
+			<h1 class="display-5 fw-bold text-center">Sonnenberg Fields</h1>
+		</div>
+	</div>
+{% endblock %}
