@@ -1,8 +1,7 @@
 from flask import Flask, g, redirect, send_from_directory, render_template, url_for
 from flask_autoindex import AutoIndexBlueprint
 from flask import Blueprint
-from flask_login import LoginManager, login_required, logout_user
-from flask_login import login_user
+from flask_login import LoginManager, login_required, logout_user, current_user, login_user
 import os
 from flask import request
 
