@@ -63,28 +63,31 @@ def logout():
 
 @app.route('/')
 def home():
-	return render_template('home.html', user=current_user)
+	return render_page('home.html')
 
 @app.route('/contact_us')
 def contact_us():
-	return render_template('contact_us.html', user=current_user)
+	return render_page('contact_us.html')
 
 @app.route('/manufacturing')
 def manufacturing():
-	return render_template('manufacturing.html', user=current_user)
+	return render_page('manufacturing.html')
 
 @app.route('/solar_generation')
 def solar_generation():
-	return render_template('solar_generation.html', user=current_user)
+	return render_page('solar_generation.html')
 
 @app.route('/login', methods = ['GET'])
 def login_page():
-	return render_template('login.html', didLoginFail=(request.args.get('error') == '1'), user=current_user)
+	return render_page('login.html', didLoginFail=(request.args.get('error') == '1'))
 
 @app.route('/admin')
 @login_required
 def admin():
-	return render_template('admin.html', user=current_user)
-	
+	return render_page('admin.html')
+
+def render_page(file, **kwargs):
+	return render_template(file, user=current_user, **kwargs)
+
 if __name__ == "__name__":
 	app.run(host='0.0.0.0', port=5000)
