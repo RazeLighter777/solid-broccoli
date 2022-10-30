@@ -1,0 +1,1 @@
+sudo docker run -it -d --name test -p 80:5000 -e SERVER_ADDRESS=10.0.122.73 -e FTP_PASS=C3TSecret4% -e FTP_USER=anonymous --security-opt apparmor:unconfined --cap-add SYS_ADMIN --device /dev/fuse solid-broccoli
