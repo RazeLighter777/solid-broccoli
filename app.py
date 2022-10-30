@@ -22,4 +22,8 @@ def manufacturing():
 def solar_generation():
 	return render_template('solar_generation.html')
 
+@app.route('/login')
+def login():
+	return render_template('login.html')
+
 app.run(host='0.0.0.0', port=5000)
