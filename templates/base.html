@@ -25,7 +25,7 @@
 
 			<div class="col-md-3 text-end">
 				{% if user.get_id() %}
-					<span class="mr-4">Welcome, {{ user.get_id() }}</span>
+					<p style="display: inline; margin-right: 1.5rem;">Welcome, {{ user.get_id() }}</p>
 					<a type="button" class="btn btn-outline-primary me-2" href="/logout">Logout</a>
 				{% else %}
 					<a type="button" class="btn btn-outline-primary me-2" href="/login">Login</a>
