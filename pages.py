@@ -9,7 +9,7 @@ def home():
 
 @bp.route('/contact_us')
 def contact_us():
-	return render_page('contact_us.html')
+	return render_page('contact_us.html', didContactFail=(request.args.get('code') == '0'), didContactSucceed=(request.args.get('code') == '1'))
 
 @bp.route('/manufacturing')
 def manufacturing():

@@ -7,8 +7,11 @@ import os
 # Routes
 import pages
 import auth
+import contact
 import mail
 import solar
+
+UPLOAD_FOLDER = '/mnt'
 
 app = Flask(__name__,
 	static_url_path='', 
@@ -16,9 +19,12 @@ app = Flask(__name__,
 	template_folder='templates'
 )
 app.secret_key = os.urandom(24)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_PATH'] = 1024 * 1000
 
 auth.init_bp(app)
 mail.init_bp(app)
+contact.init_bp(app)
 solar.init_bp(app)
 
 #add folder listing to the page
@@ -28,6 +34,7 @@ AutoIndexBlueprint(bp_ai, browse_root=ppath, template_context=dict(x='y'))
 app.register_blueprint(bp_ai, url_prefix='/files')
 app.register_blueprint(pages.bp, url_prefix='/')
 app.register_blueprint(auth.bp, url_prefix='/')
+app.register_blueprint(contact.bp, url_prefix='/contact')
 app.register_blueprint(mail.bp, url_prefix='/mail')
 app.register_blueprint(solar.bp, url_prefix='/solar')
 

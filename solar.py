@@ -25,6 +25,9 @@ sio.connect('http://10.0.122.76:1880', namespaces=['/react_ArrayOV'], socketio_p
 
 @sio.event(namespace='/react_ArrayOV')
 def uiBuilder(data):
+	if data['topic'] == 'array-power-out':
+		return
+	
 	if data['topic'].startswith('array'):
 		solarIndex = int(data['topic'][5]) - 1
 		solarProp = data['topic'][7:]
