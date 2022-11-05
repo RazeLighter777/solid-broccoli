@@ -7,8 +7,7 @@ RUN apt update -y && apt upgrade -y
 RUN apt install -y curlftpfs
 RUN pip3 install -r requirements.txt
 COPY . .
-RUN source .env
+RUN . .env
 RUN chmod +x ./start.sh
 EXPOSE 5000/tcp
 CMD ["sh","./start.sh"]
-
