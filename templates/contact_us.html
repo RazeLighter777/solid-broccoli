@@ -26,7 +26,7 @@
 			<div class="card">
 				<div class="card-body">
 					<h2 class="text-center">Contact Us Form</h2>
-					<form action="/contact_us" method="post">
+					<form action="/contact/send" method="post" enctype="multipart/form-data">
 						<div class="mb-3">
 							<label for="contactNameInput" class="form-label">Name</label>
 							<input type="text" name="name" class="form-control" id="contactNameInput" placeholder="Jauwghn Dough" required>
@@ -39,7 +39,17 @@
 							<label for="contactPhoneInput" class="form-label">Phone Number</label>
 							<input type="tel" name="phone" class="form-control" id="contactPhoneInput" placeholder="123-456-7890" required>
 						</div>
+						<div class="mb-3">
+							<label for="contactPhoneInput" class="form-label">File Upload</label>
+							<input type="file" name="file" class="form-control" id="contactFileInput" required>
+						</div>
 						<button type="submit" class="btn btn-primary mb-3 w-100">Submit</button>
+						{% if didContactFail %}
+							<p class="text-danger">File Upload Failed</p>
+						{% endif %}
+						{% if didContactSucceed %}
+							<p class="text-success">File Upload Succeeded</p>
+						{% endif %}
 					</form>
 				</div>
 			</div>
