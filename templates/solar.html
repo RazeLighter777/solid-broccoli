@@ -17,7 +17,7 @@
 
 <script type="text/javascript">
 	let notfounder = val => typeof val === 'undefined' ? 'Not Found' : val;
-	fetch('http://localhost:5000/solar/api').then(r => r.json()).then(json => {
+	fetch('/solar/api').then(r => r.json()).then(json => {
 		let overallOutputPower = 0;
 		let cards = json.solarData.map((a, idx) => {
 			overallOutputPower += (a['output-voltage'] || 0) * (a['output-current'] || 0);
