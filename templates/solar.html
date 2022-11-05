@@ -1,11 +1,42 @@
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="theme-color" content="#000000"><link rel="manifest" href="/solar/manifest.json"><link rel="shortcut icon" href="/solar/Argonne_Solar_SZSLogo_01.PNG"><title>Sole Zone Solas HMI</title><script defer="defer" src="/solar/static/js/main.65514e6b.js"></script><link href="/solar/static/css/main.b380032f.css" rel="stylesheet"></head><body><div><h1>Sole Zone Solas HMI - Solar Arrays</h1></div><div id="root"><div id="app"></div></div><div style="position: static !important;"></div><script>
-	document.body.hidden = true;
-	let interval;
-	interval = setInterval(() => {
-		let core_content = document.querySelector('.row.justify-content-center.align-items-center');
-		if(!core_content) return;
-		document.body.innerHTML = core_content.innerHTML;
-		clearInterval(interval);
-		document.body.hidden = false;
-	}, 1);
-</script></body></html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<style type="text/css">
+	.card {
+		margin-bottom: 1rem;
+	}
+</style>
+
+<div class='row'>
+	<div class="col" id="arrayCol"></div>
+	<div class="col">
+		<pre id="dataPre">
+			
+		</pre>
+	</div>
+</div>
+
+<script type="text/javascript">
+	let notfounder = val => typeof val === 'undefined' ? 'Not Found' : val;
+	fetch('http://localhost:5000/solar/api').then(r => r.json()).then(json => {
+		let overallOutputPower = 0;
+		let cards = json.solarData.map((a, idx) => {
+			overallOutputPower += (a['output-voltage'] || 0) * (a['output-current'] || 0);
+			return `
+<div class="card">
+	<div class="card-header">Array #${idx + 1}</div>
+  <div class="card-body">
+    <pre>Output Voltage: ${notfounder(a['output-voltage'])}
+Output Current: ${notfounder(a['output-current'])}
+Temperature: ${notfounder(a['temperature'])}</pre>
+  </div>
+</div>
+		`}).join("");
+		document.querySelector('#arrayCol').innerHTML += cards;
+		document.querySelector('#dataPre').innerText = `
+Overall Output Power: ${overallOutputPower}
+Tracker Tilt Degree: ${json.trackerTiltDegree}
+Azimuth Angle: ${json.azimuthAngle}
+`;
+		
+	});
+</script>
