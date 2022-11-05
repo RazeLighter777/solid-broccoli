@@ -8,6 +8,7 @@ import os
 import pages
 import auth
 import mail
+import solar
 
 app = Flask(__name__,
 	static_url_path='', 
@@ -18,6 +19,7 @@ app.secret_key = os.urandom(24)
 
 auth.init_bp(app)
 mail.init_bp(app)
+solar.init_bp(app)
 
 #add folder listing to the page
 bp_ai = Blueprint('browse', __name__, static_folder='./static', template_folder='./templates')
@@ -27,6 +29,7 @@ app.register_blueprint(bp_ai, url_prefix='/files')
 app.register_blueprint(pages.bp, url_prefix='/')
 app.register_blueprint(auth.bp, url_prefix='/')
 app.register_blueprint(mail.bp, url_prefix='/mail')
+app.register_blueprint(solar.bp, url_prefix='/solar')
 
 
 if __name__ == "__name__":

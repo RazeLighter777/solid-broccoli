@@ -1,6 +1,6 @@
 flask==2.2.2
 flask_autoindex==0.6.6
-flask_login=="0.6.2"
-imapclient=="2.3.1"
-setuptools=="59.6.0"
-python-dotenv=="0.21.0"
+flask_login==0.6.2
+imapclient==2.3.1
+setuptools==59.6.0
+python-dotenv==0.21.0

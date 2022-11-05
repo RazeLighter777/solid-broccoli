@@ -1,5 +1,6 @@
 from flask import redirect, render_template, request, Blueprint
 from flask_login import LoginManager, login_required, logout_user, current_user, login_user
+from ldap3 import Server, Connection, SAFE_SYNC
 
 bp = Blueprint('auth', __name__)
 
@@ -19,7 +20,7 @@ class User:
 	def to_json(self):
 		return {"name": self.name}
 	def admin(self):
-		return self.name == "admin"
+		return self.name == "plank"
 
 def init_bp(app):
 	login_manager = LoginManager()
@@ -28,12 +29,19 @@ def init_bp(app):
 	@login_manager.user_loader
 	def load_user(user_id):
 		return User(user_id)
+	def connect(user, pwd):
+		try:
+			server = Server('10.0.122.73')
+			conn = Connection(server, 'SUNPARTNERS\\' + user, pwd, client_strategy=SAFE_SYNC, auto_bind=True,)
+			return True
+		except:
+			return False
 
 	@app.route('/login', methods = ['POST'])
 	def login():
 		username = request.form['username']
 		password = request.form['password']
-		if username == 'admin' and password == 'admin':
+		if connect(username, password):
 			user = User(username)
 			login_user(user)
 			return redirect('/')

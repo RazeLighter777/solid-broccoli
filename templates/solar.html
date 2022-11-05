@@ -1,0 +1,11 @@
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="theme-color" content="#000000"><link rel="manifest" href="/solar/manifest.json"><link rel="shortcut icon" href="/solar/Argonne_Solar_SZSLogo_01.PNG"><title>Sole Zone Solas HMI</title><script defer="defer" src="/solar/static/js/main.65514e6b.js"></script><link href="/solar/static/css/main.b380032f.css" rel="stylesheet"></head><body><div><h1>Sole Zone Solas HMI - Solar Arrays</h1></div><div id="root"><div id="app"></div></div><div style="position: static !important;"></div><script>
+	document.body.hidden = true;
+	let interval;
+	interval = setInterval(() => {
+		let core_content = document.querySelector('.row.justify-content-center.align-items-center');
+		if(!core_content) return;
+		document.body.innerHTML = core_content.innerHTML;
+		clearInterval(interval);
+		document.body.hidden = false;
+	}, 1);
+</script></body></html>
